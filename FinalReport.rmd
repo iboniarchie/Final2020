@@ -4,8 +4,13 @@ author: "Put your name here!"
 date: "put the date here"
 output: 
     html_document:
-    toc: true
+          toc: true
+          toc_depth: 5
 ---
+
+
+
+
 
 ```{r include=FALSE,echo=FALSE}
 require(tidyverse)
@@ -14,10 +19,390 @@ require(forcats)
 OldData <-read.csv(file="covid91.csv",header=TRUE)
 #recode to remove the annoying "X" from the dataframe
 FinalData <- OldData %>% mutate(infected = recode(infected, aids = "covid", none = "OK" )) %>% select(-one_of("X"))
-FinalData_updated <-as.factor(FinalData)
+
+FinalData$treatment <-as.factor(FinalData$treatment)
+FinalData$sex <- as.factor(FinalData$sex)                           
+FinalData$infected <- as.factor(FinalData$infected)
+FinalData$LGBTQ <- as.factor(FinalData$LGBTQ)
+FinalData$DrugUser <- as.factor(FinalData$DrugUser)
+FinalData$treatment <- relevel(FinalData$treatment,ref="placebo")
+FinalData$infected <- relevel(FinalData$infected,ref="covid")
 ```
+
+```{r}
+guy <-filter(FinalData,sex == "guy")
+guy$treatment<- relevel(guy$treatment,ref="placebo")
+guy$infected<- relevel(guy$infected,ref="covid")
+```
+
+
+
 
 # Introduction
 
 A new  preventative vaccine (covid91) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of subpopulations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbage when referencing p-values in conclusions.
+
+# Everyone  
+
+## Barplott
+
+```{r}
+barchartGC(~infected + treatment,data=FinalData)
+barchartGC(~infected + treatment,data=FinalData, type="percent")
+
+```
+
+
+
+
+
+## Numerical results
+
+```{r}
+table1 <- xtabs(~class + Sex, data=davisdata)
+rowPerc(table1)
+colPerc(table1)
+```
+
+
+
+## Inferential
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+fisher.test(table2)
+```
+
+
+
+
+
+
+
+
+
+## Fisher XY
+
+# Guys
+
+## Barplott
+
+
+
+```{r}
+barchartGC(~infected + treatment,data=guy)
+barchartGC(~infected + treatment,data=guy, type="percent")
+
+```
+
+
+
+
+
+
+## Numerical results
+
+```{r}
+table1 <- xtabs(~class + Sex, data=davisdata)
+rowPerc(table1)
+colPerc(table1)
+```
+
+
+
+
+
+
+
+## Inferential
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+fisher.test(table2)
+```
+
+
+
+
+
+
+
+## Fisher XY
+
+# Gals
+
+## Barplott
+
+```{r}
+barchartGC(~infected + treatment,data=guy)
+barchartGC(~infected + treatment,data=guy, type="percent")
+
+```
+
+
+
+
+
+
+
+## Numerical results
+
+```{r}
+table1 <- xtabs(~class + Sex, data=davisdata)
+rowPerc(table1)
+colPerc(table1)
+```
+
+
+
+
+
+## Inferential
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+fisher.test(table2)
+```
+
+
+
+
+
+
+## Fisher XY
+
+# LGBQT
+
+## Barplott 
+
+```{r}
+barchartGC(~infected + treatment,data=guy)
+barchartGC(~infected + treatment,data=guy, type="percent")
+
+```
+
+
+
+
+
+
+
+
+
+## Numerical results
+
+```{r}
+table1 <- xtabs(~class + Sex, data=davisdata)
+rowPerc(table1)
+colPerc(table1)
+```
+
+
+
+
+
+
+
+
+
+
+
+## Inferential
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+fisher.test(table2)
+```
+
+
+
+
+
+## Fisher XY
+
+# Druguser
+
+## Barplott
+
+```{r}
+barchartGC(~infected + treatment,data=guy)
+barchartGC(~infected + treatment,data=guy, type="percent")
+
+```
+
+
+
+
+
+
+
+## Numerical results
+
+```{r}
+table1 <- xtabs(~class + Sex, data=davisdata)
+rowPerc(table1)
+colPerc(table1)
+```
+
+
+
+
+## Inferential
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+fisher.test(table2)
+```
+
+
+
+
+
+## Fisher XY
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+table1 <- xtabs(~treatment + infected, data=FinalData)
+table2 <- xtabs(~infected + treatment, data=FinalData)
+rowPerc(table1)
+colPerc(table1)
+```
+
+
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+fisher.test(table2)
+```
+
+
+
+
+
+
+
+
+
+```{r}
+guy <-guy  %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(guy,aes(x=treatment,y=count,fill=infected))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(guy,aes(x=infected,y=prcnt*100,fill=treatment)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
