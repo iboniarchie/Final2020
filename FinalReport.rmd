@@ -26,13 +26,14 @@ FinalData$infected <- as.factor(FinalData$infected)
 FinalData$LGBTQ <- as.factor(FinalData$LGBTQ)
 FinalData$DrugUser <- as.factor(FinalData$DrugUser)
 FinalData$treatment <- relevel(FinalData$treatment,ref="placebo")
-FinalData$infected <- relevel(FinalData$infected,ref="covid")
+FinalData$infected <- relevel(FinalData$infected,ref="OK")
 ```
 
 ```{r}
-guy <-filter(FinalData,sex == "guy")
-guy$treatment<- relevel(guy$treatment,ref="placebo")
-guy$infected<- relevel(guy$infected,ref="covid")
+guy = filter(FinalData,sex == "guy")
+gal = filter(FinalData,sex == "gal")
+gay = filter(FinalData,LGBTQ == "gay")
+yes = filter(FinalData,DrugUser == "yes")
 ```
 
 
@@ -52,6 +53,23 @@ barchartGC(~infected + treatment,data=FinalData, type="percent")
 
 ```
 
+```{r}
+dd2 <- FinalData %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(dd2,aes(x=infected,y=count,fill=treatment))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
+
+
+
 
 
 
@@ -59,7 +77,8 @@ barchartGC(~infected + treatment,data=FinalData, type="percent")
 ## Numerical results
 
 ```{r}
-table1 <- xtabs(~class + Sex, data=davisdata)
+table1 <- xtabs(~infected + treatment, data=FinalData)
+table2 <- xtabs(~infected + treatment, data=FinalData)
 rowPerc(table1)
 colPerc(table1)
 ```
@@ -84,6 +103,33 @@ fisher.test(table2)
 
 
 ## Fisher XY
+
+## Now compute effectiveness and print it out.
+
+
+```{r}
+FisherObj  <- fisher.test(table1) 
+```
+
+
+### We extract the odds ratio and compute the effectiveness
+
+
+```{r}
+oddratio = FisherObj$estimate
+efft = oddratio/(oddratio+1)
+efftness = efft*100
+options(digits=3)
+```
+
+
+
+
+## The effectiveness is `r efftness`
+
+
+
+
 
 # Guys
 
@@ -99,15 +145,19 @@ barchartGC(~infected + treatment,data=guy, type="percent")
 
 
 
-
-
-
-## Numerical results
-
 ```{r}
-table1 <- xtabs(~class + Sex, data=davisdata)
-rowPerc(table1)
-colPerc(table1)
+dd2 <- guy %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(dd2,aes(x=infected,y=count,fill=treatment))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
 
@@ -115,6 +165,19 @@ colPerc(table1)
 
 
 
+
+
+
+
+
+## Numerical results
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=guy)
+table2 <- xtabs(~infected + treatment, data=guy)
+rowPerc(table1)
+colPerc(table1)
+```
 
 ## Inferential
 
@@ -126,22 +189,82 @@ fisher.test(table2)
 ```
 
 
-
-
-
-
-
 ## Fisher XY
+
+
+## Now compute effectiveness and print it out.
+
+
+```{r}
+FisherObj  <- fisher.test(table1) 
+```
+
+
+### We extract the odds ratio and compute the effectiveness
+
+
+```{r}
+oddratio = FisherObj$estimate
+efft = oddratio/(oddratio+1)
+efftness = efft*100
+options(digits=3)
+```
+
+
+
+
+## The effectiveness is `r efftness`
+
+
+
+
+
 
 # Gals
 
 ## Barplott
 
 ```{r}
-barchartGC(~infected + treatment,data=guy)
-barchartGC(~infected + treatment,data=guy, type="percent")
+barchartGC(~infected + treatment,data=gal)
+barchartGC(~infected + treatment,data=gal, type="percent")
 
 ```
+
+
+
+
+```{r}
+dd2 <- gal %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(dd2,aes(x=infected,y=count,fill=treatment))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -152,7 +275,8 @@ barchartGC(~infected + treatment,data=guy, type="percent")
 ## Numerical results
 
 ```{r}
-table1 <- xtabs(~class + Sex, data=davisdata)
+table1 <- xtabs(~infected + treatment, data=gal)
+table2 <- xtabs(~infected + treatment, data=gal)
 rowPerc(table1)
 colPerc(table1)
 ```
@@ -176,14 +300,38 @@ fisher.test(table2)
 
 
 ## Fisher XY
+
+## Now compute effectiveness and print it out.
+
+
+```{r}
+FisherObj  <- fisher.test(table1) 
+```
+
+
+### We extract the odds ratio and compute the effectiveness
+
+
+```{r}
+oddratio = FisherObj$estimate
+efft = oddratio/(oddratio+1)
+efftness = efft*100
+options(digits=3)
+```
+
+
+## The effectiveness is `r efftness`
+
+
+
 
 # LGBQT
 
 ## Barplott 
 
 ```{r}
-barchartGC(~infected + treatment,data=guy)
-barchartGC(~infected + treatment,data=guy, type="percent")
+barchartGC(~infected + treatment,data=gay)
+barchartGC(~infected + treatment,data=gay, type="percent")
 
 ```
 
@@ -198,17 +346,11 @@ barchartGC(~infected + treatment,data=guy, type="percent")
 ## Numerical results
 
 ```{r}
-table1 <- xtabs(~class + Sex, data=davisdata)
+table1 <- xtabs(~infected + treatment, data=gay)
+table2 <- xtabs(~infected + treatment, data=gay)
 rowPerc(table1)
 colPerc(table1)
 ```
-
-
-
-
-
-
-
 
 
 
@@ -228,15 +370,106 @@ fisher.test(table2)
 
 ## Fisher XY
 
+
+
+
+
+
+## Now compute effectiveness and print it out.
+
+
+```{r}
+FisherObj  <- fisher.test(table1) 
+```
+
+
+### We extract the odds ratio and compute the effectiveness
+
+
+```{r}
+oddratio = FisherObj$estimate
+efft = oddratio/(oddratio+1)
+efftness = efft*100
+options(digits=3)
+```
+
+
+
+
+## The effectiveness is `r efftness`
+
+
+
+
+
 # Druguser
 
 ## Barplott
 
 ```{r}
-barchartGC(~infected + treatment,data=guy)
-barchartGC(~infected + treatment,data=guy, type="percent")
+barchartGC(~infected + treatment,data=yes)
+barchartGC(~infected + treatment,data=yes, type="percent")
 
 ```
+
+
+
+
+
+
+
+
+
+
+```{r}
+dd2 <- yes %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(dd2,aes(x=infected,y=count,fill=treatment))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -247,7 +480,8 @@ barchartGC(~infected + treatment,data=guy, type="percent")
 ## Numerical results
 
 ```{r}
-table1 <- xtabs(~class + Sex, data=davisdata)
+table1 <- xtabs(~infected + treatment, data=yes)
+table2 <- xtabs(~infected + treatment, data=yes)
 rowPerc(table1)
 colPerc(table1)
 ```
@@ -272,62 +506,75 @@ fisher.test(table2)
 
  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Now compute effectiveness and print it out.
 
 
 ```{r}
-table1 <- xtabs(~treatment + infected, data=FinalData)
-table2 <- xtabs(~infected + treatment, data=FinalData)
-rowPerc(table1)
-colPerc(table1)
+FisherObj  <- fisher.test(table1) 
 ```
 
 
+### We extract the odds ratio and compute the effectiveness
+
 
 ```{r}
-chisq.test(table1)
-chisqtestGC(table1)
-fisher.test(table1)
-fisher.test(table2)
+oddratio = FisherObj$estimate
+efft = oddratio/(oddratio+1)
+efftness = efft*100
+options(digits=3)
 ```
 
 
 
 
+## The effectiveness is `r efftness`
 
 
 
 
 
-```{r}
-guy <-guy  %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
 
 
-# the group_by followed by summarize(count=n())
 
-basicC <- ggplot(guy,aes(x=treatment,y=count,fill=infected))
-basicC + geom_bar(stat="identity",position="dodge")
 
-#Now for percentage plot
 
-basicCC <- ggplot(guy,aes(x=infected,y=prcnt*100,fill=treatment)) 
-basicCC + geom_bar(stat="identity", position = "dodge")
-```
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   
   
