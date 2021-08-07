@@ -104,7 +104,7 @@ P-value ≤ α: The variables have a statistically significant association
 If the p-value is less than or equal to the significance level, you reject the null hypothesis and conclude that there is a statistically significant association between the variables.
 P-value > α: Cannot conclude that the variables are associated (Fail to reject H0
 If the p-value is larger than the significance level, you fail to reject the null hypothesis because there is not enough evidence to conclude that the variables are associated.
-In these results, the p-value = 0.122  Because the p-value is less you reject the null hypothesis. You can conclude that the variables are associated.
+In these results, the p-value = 1.3  Because the p-value is greater you accept the null hypothesis. You can conclude that the variables are associated.
 
 
 
@@ -165,7 +165,7 @@ basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment))
 basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
-In the barplott for everyone shows that the amount of people who got covid from
+In the barplott for guys shows that the amount of people who got covid from
 taking the placebo was 58% compared to the amount of people who took the vaccine
 which was around 41% a difference of about 17% which shows the effectiveness of 
 of the Vaccine
@@ -189,7 +189,7 @@ colPerc(table1)
 ```
 
 relating to the numbers of people who had the vaccine compared to the people who
-didnt take the vaccine and got covid the table shows that 42.06 of people who to the covid vaccine and 57.94 of people who took placebo and was exposed contracted the disease.
+didnt take the vaccine and got covid the table shows that 58.06 of people who to the covid vaccine and 41.94 of people who took placebo and was exposed contracted the disease.
 
 
 
@@ -209,7 +209,7 @@ P-value ≤ α: The variables have a statistically significant association
 If the p-value is less than or equal to the significance level, you reject the null hypothesis and conclude that there is a statistically significant association between the variables.
 P-value > α: Cannot conclude that the variables are associated (Fail to reject H0
 If the p-value is larger than the significance level, you fail to reject the null hypothesis because there is not enough evidence to conclude that the variables are associated.
-In these results, the p-value = 0.122  Because the p-value is less you reject the null hypothesis. You can conclude that the variables are associated.
+In these results, the p-value = 0.6  Because the p-value is greater you have to  accept the null hypothesis. You can conclude that the variables are associated.
 
 
 
@@ -282,9 +282,9 @@ basicCC + geom_bar(stat="identity", position = "dodge")
 
 
 
-In the barplott for everyone shows that the amount of people who got covid from
-taking the placebo was 58% compared to the amount of people who took the vaccine
-which was around 41% a difference of about 17% which shows the effectiveness of 
+In the barplott for women shows that the amount of people who got covid from
+taking the placebo was 68% compared to the amount of people who took the vaccine
+which was around 36% a difference of about 32% which shows the effectiveness of 
 of the Vaccine
 
 
@@ -318,7 +318,7 @@ colPerc(table1)
 ```
 
 relating to the numbers of people who had the vaccine compared to the people who
-didnt take the vaccine and got covid the table shows that 42.06 of people who to the covid vaccine and 57.94 of people who took placebo and was exposed contracted the disease.
+didnt take the vaccine and got covid the table shows that 33.06 of people who to the covid vaccine and 66.94 of people who took placebo and was exposed contracted the disease.
 
 
 
@@ -419,7 +419,7 @@ colPerc(table1)
 ```
 
 relating to the numbers of people who had the vaccine compared to the people who
-didnt take the vaccine and got covid the table shows that 42.06 of people who to the covid vaccine and 57.94 of people who took placebo and was exposed contracted the disease.
+didnt take the vaccine and got covid the table shows that 49.06 of people who to the covid vaccine and 50.8 of people who took placebo and was exposed contracted the disease.
 
 
 
@@ -443,7 +443,7 @@ P-value ≤ α: The variables have a statistically significant association
 If the p-value is less than or equal to the significance level, you reject the null hypothesis and conclude that there is a statistically significant association between the variables.
 P-value > α: Cannot conclude that the variables are associated (Fail to reject H0
 If the p-value is larger than the significance level, you fail to reject the null hypothesis because there is not enough evidence to conclude that the variables are associated.
-In these results, the p-value = 0.122  Because the p-value is less you reject the null hypothesis. You can conclude that the variables are associated.
+In these results, the p-value = 0.6 Because the p-value is greater you accept the null hypothesis. You can conclude that the variables are associated.
 
 
 
@@ -520,9 +520,9 @@ basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment))
 basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
-In the barplott for everyone shows that the amount of people who got covid from
-taking the placebo was 58% compared to the amount of people who took the vaccine
-which was around 41% a difference of about 17% which shows the effectiveness of 
+In the barplott for druguser shows that the amount of people who got covid from
+taking the placebo was 62% compared to the amount of people who took the vaccine
+which was around 38% a difference of about 24% which shows the effectiveness of 
 of the Vaccine
 
 
@@ -540,7 +540,7 @@ colPerc(table1)
 ```
 
 relating to the numbers of people who had the vaccine compared to the people who
-didnt take the vaccine and got covid the table shows that 42.06 of people who to the covid vaccine and 57.94 of people who took placebo and was exposed contracted the disease.
+didnt take the vaccine and got covid the table shows that 47.8 of people who to the covid vaccine and 52.2 of people who took placebo and was exposed contracted the disease.
 
 
 
@@ -564,7 +564,7 @@ P-value ≤ α: The variables have a statistically significant association
 If the p-value is less than or equal to the significance level, you reject the null hypothesis and conclude that there is a statistically significant association between the variables.
 P-value > α: Cannot conclude that the variables are associated (Fail to reject H0
 If the p-value is larger than the significance level, you fail to reject the null hypothesis because there is not enough evidence to conclude that the variables are associated.
-In these results, the p-value = 0.122  Because the p-value is less you reject the null hypothesis. You can conclude that the variables are associated.
+In these results, the p-value = 0.003  Because the p-value is less you reject the null hypothesis. You can conclude that the variables are associated.
 
 
 
