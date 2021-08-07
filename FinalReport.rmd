@@ -1,7 +1,7 @@
 ---
 title: "Covid91 vaccine study Final2021"
-author: "Put your name here!"
-date: "put the date here"
+author: "iboni archie"
+date: "summer 2021"
 output: 
     html_document:
           toc: true
@@ -97,13 +97,6 @@ fisher.test(table2)
 
 
 
-
-
-
-
-
-## Fisher XY
-
 ## Now compute effectiveness and print it out.
 
 
@@ -188,8 +181,6 @@ fisher.test(table1)
 fisher.test(table2)
 ```
 
-
-## Fisher XY
 
 
 ## Now compute effectiveness and print it out.
@@ -296,11 +287,6 @@ fisher.test(table2)
 
 
 
-
-
-
-## Fisher XY
-
 ## Now compute effectiveness and print it out.
 
 
@@ -363,14 +349,6 @@ chisqtestGC(table1)
 fisher.test(table1)
 fisher.test(table2)
 ```
-
-
-
-
-
-## Fisher XY
-
-
 
 
 
@@ -442,41 +420,6 @@ basicCC + geom_bar(stat="identity", position = "dodge")
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Numerical results
 
 ```{r}
@@ -499,10 +442,6 @@ fisher.test(table2)
 ```
 
 
-
-
-
-## Fisher XY
 
  
 
