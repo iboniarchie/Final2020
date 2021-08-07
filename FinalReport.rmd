@@ -68,7 +68,10 @@ basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment))
 basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
-
+In the barplott for everyone shows that the amount of people who got covid from
+taking the placebo was 58% compared to the amount of people who took the vaccine
+which was around 41% a difference of about 17% which shows the effectiveness of 
+of the Vaccine
 
 
 
@@ -83,7 +86,8 @@ rowPerc(table1)
 colPerc(table1)
 ```
 
-
+relating to the numbers of people who had the vaccine compared to the people who
+didnt take the vaccine and got covid the table shows that 42.06 of people who to the covid vaccine and 57.94 of people who took placebo and was exposed contracted the disease.
 
 ## Inferential
 
@@ -93,6 +97,14 @@ chisqtestGC(table1)
 fisher.test(table1)
 fisher.test(table2)
 ```
+
+The Pearsons test used to determine the diffrencd between variables
+To determine whether the variables are independent, compare the p-value to the significance level. Usually, a significance level of 0.05 works well. A significance level of 0.05 indicates a 5% risk of concluding that an association between the variables exists when there is no actual association.
+P-value ≤ α: The variables have a statistically significant association 
+If the p-value is less than or equal to the significance level, you reject the null hypothesis and conclude that there is a statistically significant association between the variables.
+P-value > α: Cannot conclude that the variables are associated (Fail to reject H0
+If the p-value is larger than the significance level, you fail to reject the null hypothesis because there is not enough evidence to conclude that the variables are associated.
+In these results, the p-value = 0.122  Because the p-value is less you reject the null hypothesis. You can conclude that the variables are associated.
 
 
 
@@ -153,6 +165,10 @@ basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment))
 basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
+In the barplott for everyone shows that the amount of people who got covid from
+taking the placebo was 58% compared to the amount of people who took the vaccine
+which was around 41% a difference of about 17% which shows the effectiveness of 
+of the Vaccine
 
 
 
@@ -172,6 +188,12 @@ rowPerc(table1)
 colPerc(table1)
 ```
 
+relating to the numbers of people who had the vaccine compared to the people who
+didnt take the vaccine and got covid the table shows that 42.06 of people who to the covid vaccine and 57.94 of people who took placebo and was exposed contracted the disease.
+
+
+
+
 ## Inferential
 
 ```{r}
@@ -180,6 +202,25 @@ chisqtestGC(table1)
 fisher.test(table1)
 fisher.test(table2)
 ```
+
+The Pearsons test used to determine the diffrencd between variables
+To determine whether the variables are independent, compare the p-value to the significance level. Usually, a significance level of 0.05 works well. A significance level of 0.05 indicates a 5% risk of concluding that an association between the variables exists when there is no actual association.
+P-value ≤ α: The variables have a statistically significant association 
+If the p-value is less than or equal to the significance level, you reject the null hypothesis and conclude that there is a statistically significant association between the variables.
+P-value > α: Cannot conclude that the variables are associated (Fail to reject H0
+If the p-value is larger than the significance level, you fail to reject the null hypothesis because there is not enough evidence to conclude that the variables are associated.
+In these results, the p-value = 0.122  Because the p-value is less you reject the null hypothesis. You can conclude that the variables are associated.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -241,6 +282,10 @@ basicCC + geom_bar(stat="identity", position = "dodge")
 
 
 
+In the barplott for everyone shows that the amount of people who got covid from
+taking the placebo was 58% compared to the amount of people who took the vaccine
+which was around 41% a difference of about 17% which shows the effectiveness of 
+of the Vaccine
 
 
 
@@ -272,6 +317,12 @@ rowPerc(table1)
 colPerc(table1)
 ```
 
+relating to the numbers of people who had the vaccine compared to the people who
+didnt take the vaccine and got covid the table shows that 42.06 of people who to the covid vaccine and 57.94 of people who took placebo and was exposed contracted the disease.
+
+
+
+
 
 
 
@@ -284,6 +335,35 @@ chisqtestGC(table1)
 fisher.test(table1)
 fisher.test(table2)
 ```
+
+The Pearsons test used to determine the diffrencd between variables
+To determine whether the variables are independent, compare the p-value to the significance level. Usually, a significance level of 0.05 works well. A significance level of 0.05 indicates a 5% risk of concluding that an association between the variables exists when there is no actual association.
+P-value ≤ α: The variables have a statistically significant association 
+If the p-value is less than or equal to the significance level, you reject the null hypothesis and conclude that there is a statistically significant association between the variables.
+P-value > α: Cannot conclude that the variables are associated (Fail to reject H0
+If the p-value is larger than the significance level, you fail to reject the null hypothesis because there is not enough evidence to conclude that the variables are associated.
+In these results, the p-value = 0.122  Because the p-value is less you reject the null hypothesis. You can conclude that the variables are associated.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -338,6 +418,12 @@ rowPerc(table1)
 colPerc(table1)
 ```
 
+relating to the numbers of people who had the vaccine compared to the people who
+didnt take the vaccine and got covid the table shows that 42.06 of people who to the covid vaccine and 57.94 of people who took placebo and was exposed contracted the disease.
+
+
+
+
 
 
 
@@ -349,6 +435,26 @@ chisqtestGC(table1)
 fisher.test(table1)
 fisher.test(table2)
 ```
+
+
+The Pearsons test used to determine the diffrencd between variables
+To determine whether the variables are independent, compare the p-value to the significance level. Usually, a significance level of 0.05 works well. A significance level of 0.05 indicates a 5% risk of concluding that an association between the variables exists when there is no actual association.
+P-value ≤ α: The variables have a statistically significant association 
+If the p-value is less than or equal to the significance level, you reject the null hypothesis and conclude that there is a statistically significant association between the variables.
+P-value > α: Cannot conclude that the variables are associated (Fail to reject H0
+If the p-value is larger than the significance level, you fail to reject the null hypothesis because there is not enough evidence to conclude that the variables are associated.
+In these results, the p-value = 0.122  Because the p-value is less you reject the null hypothesis. You can conclude that the variables are associated.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -414,6 +520,10 @@ basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment))
 basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
+In the barplott for everyone shows that the amount of people who got covid from
+taking the placebo was 58% compared to the amount of people who took the vaccine
+which was around 41% a difference of about 17% which shows the effectiveness of 
+of the Vaccine
 
 
 
@@ -429,6 +539,13 @@ rowPerc(table1)
 colPerc(table1)
 ```
 
+relating to the numbers of people who had the vaccine compared to the people who
+didnt take the vaccine and got covid the table shows that 42.06 of people who to the covid vaccine and 57.94 of people who took placebo and was exposed contracted the disease.
+
+
+
+
+
 
 
 
@@ -440,6 +557,29 @@ chisqtestGC(table1)
 fisher.test(table1)
 fisher.test(table2)
 ```
+
+The Pearsons test used to determine the diffrencd between variables
+To determine whether the variables are independent, compare the p-value to the significance level. Usually, a significance level of 0.05 works well. A significance level of 0.05 indicates a 5% risk of concluding that an association between the variables exists when there is no actual association.
+P-value ≤ α: The variables have a statistically significant association 
+If the p-value is less than or equal to the significance level, you reject the null hypothesis and conclude that there is a statistically significant association between the variables.
+P-value > α: Cannot conclude that the variables are associated (Fail to reject H0
+If the p-value is larger than the significance level, you fail to reject the null hypothesis because there is not enough evidence to conclude that the variables are associated.
+In these results, the p-value = 0.122  Because the p-value is less you reject the null hypothesis. You can conclude that the variables are associated.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
